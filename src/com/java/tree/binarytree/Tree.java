@@ -38,6 +38,22 @@ public class Tree {
         traversePreOrder(node.right);
     }
 
+    public void traverseInOrder(Node node) {
+        if(node == null)
+            return;
+        traverseInOrder(node.left);
+        System.out.print(node.value +", ");
+        traverseInOrder(node.right);
+    }
+
+    public void traversePostOrder(Node node) {
+        if(node == null)
+            return;
+        traverseInOrder(node.left);
+        traversePreOrder(node.right);
+        System.out.print(node.value +", ");
+    }
+
     public static void  main(String [] args) {
         Tree tree = new Tree();
         Node node = new Node(5);
@@ -50,7 +66,14 @@ public class Tree {
         tree.insert(node, 7);
         tree.insert(node, 3);
         tree.insert(node, 9);
+        System.out.println("***** Preorder traversal start ******");
         tree.traversePreOrder(node);
+        System.out.println();
+        System.out.println("***** Inorder traversal start ******");
+        tree.traverseInOrder(node);
+        System.out.println();
+        System.out.println("***** Postorder traversal start ******");
+        tree.traversePostOrder(node);
     }
 
 }
